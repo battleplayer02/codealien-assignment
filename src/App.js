@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './style.css';
 import Responce from './Response';
-
+import useLocalStorage from './useLocalStorage';
 export default function App() {
   const [url, setUrl] = useState('');
-  const [urlArr, setUrlArr] = useState([
+  const [urlArr, setUrlArr] = useLocalStorage('arr', [
     { url: 'https://codealien-assignment.stackblitz.io/', timeout: 1000 }
   ]);
 
