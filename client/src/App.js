@@ -6,7 +6,7 @@ export default function App() {
   const [url, setUrl] = useState('');
   const [email, setemail] = useState('');
   const [urlArr, setUrlArr] = useLocalStorage('arr', [
-    { url: 'https://codealien-assignment.stackblitz.io/', timeout: 1000 }
+    { url: 'https://mail-backend-err.herokuapp.com/', timeout: 1000 }
   ]);
 
   const [timeout, setTimeout] = useState(0);

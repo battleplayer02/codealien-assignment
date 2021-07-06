@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 const Response = ({ obj, del, idx, email }) => {
+ 
   const [status, setStatus] = useState(0);
   const [flag, setFlag] = useState(true);
+
   useEffect(async () => {
     setTimeout(async () => {
       try {
