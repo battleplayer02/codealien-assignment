@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 const Response = ({ obj, del, idx, email }) => {
- 
+
   const [status, setStatus] = useState(0);
   const [flag, setFlag] = useState(true);
 
@@ -12,21 +12,26 @@ const Response = ({ obj, del, idx, email }) => {
         setStatus(data.status);
       } catch (e) {
         setStatus(400);
-        if (flag) {
-          const mail = await fetch("/mail", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(
-              {
-                "to": email,
-                "subject": "URL:" + obj.url + " Not working.",
-                "text": "URL:" + obj.url + " Not working."
-              }),
-          })
+        try {
+          if (flag) {
+            if (email !== '') {
+              const mail = await fetch("/mail", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                  {
+                    "to": email,
+                    "subject": "URL:" + obj.url + " Not working.",
+                    "text": "URL:" + obj.url + " Not working."
+                  }),
+              })
+            }
+            setFlag(false);
+          }
+        } catch (e) {
 
-          setFlag(false);
         }
       }
     }, obj.timeout);
