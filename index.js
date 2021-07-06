@@ -25,27 +25,25 @@ const transporter = nodemailer.createTransport({
         user: 'hshekhar499@gmail.com',
         pass: 'Secured@ccount123',
     },
-    secure: true, 
+    secure: true, // upgrades later with STARTTLS -- change this based on the PORT
 });
 
 app.post('/mail', (req, res) => {
     const {to, subject, text } = req.body;
     const mailData = {
-        from: 'shekhar.himanshu.02.02@gmail.com',
+        from: 'hshekhar499@gmail.com',
         to: to,
         subject: subject,
         text: text,
-        html: text,
+        html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>',
     };
 
     transporter.sendMail(mailData, (error, info) => {
         if (error) {
             return console.log(error);
         }
-        return res.status(200).send({ message: "Mail send", message_id: info.messageId });
-
+        res.status(200).send({ message: "Mail send", message_id: info.messageId });
     });
-    res.send({error:"error"})
 });
 
 
