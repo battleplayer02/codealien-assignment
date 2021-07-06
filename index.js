@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
         user: 'hshekhar499@gmail.com',
         pass: 'Secured@ccount123',
     },
-    secure: true, // upgrades later with STARTTLS -- change this based on the PORT
+    secure: false, // upgrades later with STARTTLS -- change this based on the PORT
 });
 
 app.post('/mail', (req, res) => {
